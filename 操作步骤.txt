@@ -1,0 +1,64 @@
+第一个Django项目：
+     1、创建Django项目
+		指定路径
+		Django-admin startproject 项目名称
+		
+	第一个f1：这是总的项目文件夹
+		-f1
+			-init.py：声明当前的f1文件夹为一个模块 from f1 import settings
+			-settings.py：是一个项目的配置文件
+			-urls.py：总的路由声明
+			-wsgi.py：wsgi服务器配置文件，apach nginx
+		-manage.py：创建好的项目进行交互的一个命令行管理工具
+		
+		
+开启项目：
+	进入项目的路径
+	python manage.py runserver
+	开启的是一个测试服务器，压力负载很小，500左右
+	
+settings：
+	DATABASES：
+		-'ENGINE':'django.db.backends.mysql',
+		-'USER':用户名
+		-'PASSWORD':密码
+		-'HOST':数据库主机地址
+		-'PORT':数据库访问端口
+	
+	admin：
+		Django项目提供给你的一个后台数据库管理界面
+		
+数据库生成命令：
+		makemigrations:执行检查数据库差异，生成迁移文件
+		migrate：根据迁移文件生成对应的SQL语句
+		Django默认的自带了一些数据库内容
+		//python manage.py migrate生成当前的一些数据库
+		
+创建管理界面的超级用户：
+		python manage.py createsuperuser
+		
+	
+时区和语言设置：
+		#LANGUAGE_CODE = 'en-us'
+		LANGUAGE_CODE = 'zh-Hans'
+
+		#TIME_ZONE = 'UTC'
+		TIME_ZONE = 'Asia/Shanghai'
+	
+创建App：python manage.py startapp blog
+		目录下多了一个文件夹
+		-blog ：app文件名
+			-init：声明当前文件夹可以是一个模块
+			-admin：数据库希望被后台看到，需要在这个文件夹下进行注册
+			-models：创建该app下可能使用到的数据库
+			-test：实现某些测试驱动
+			-views：实现对应功能的函数，函数存放的地址，Django页面你在访问的时候，其实都是访问视图函数
+			
+			
+			
+视图函数：
+		HttpResponse:该函数给用户返回一个html字符串
+		**配置路由**
+			-总路由找到app
+			-App路由找到视图函数
+		url：路由映射关系的函数，正则来表示你的路由链接长啥样
