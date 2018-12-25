@@ -1,3 +1,4 @@
+//app内的视图函数
 from django.shortcuts import render
 from django.http import HttpResponse
 
